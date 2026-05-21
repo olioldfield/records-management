@@ -1,5 +1,5 @@
 {
-  "serviceName": "Service name goes here",
+  "serviceName": "Get AI recommnedations for digital records",
   "useServiceNavigation": true,
   "plugins": {
     "govuk-frontend": {
