@@ -8,6 +8,7 @@
     "@govuk-prototype-kit/common-templates": "3.0.0",
     "govuk-frontend": "6.1.0",
     "govuk-prototype-kit": "13.20.0",
+    "jquery": "4.0.0",
     "notifications-node-client": "8.4.0"
   }
 }
