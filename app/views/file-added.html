@@ -1,0 +1,38 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block containerStart %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        File added for AI review
+      </h1>
+
+      <p>
+        Your file is waiting to be reviewed. </p> 
+        
+        <p>You'll get an email when your file starts being reviewed.</p>
+
+        <p>You'll get another email when your recommendations are ready.</p>  
+      
+
+      <p>
+        Return to the <a href="/homepage">homepage</a>.
+      </p>
+
+    </div>
+  </div>
+
+{% endblock %}
