@@ -18,6 +18,9 @@ html: 'This is a new service. Help us improve it and <a class="govuk-link" href=
 
 
 {% block govukFooter %}
+
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+
  {{ govukFooter({
    meta: {
      items: [
