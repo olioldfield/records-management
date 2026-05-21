@@ -1,0 +1,87 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block containerStart %}
+{{ super() }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Give feedback on Get AI recommendations for digital records
+      </h1>
+
+      <form class="form" action="/path/of/next/page" method="post">
+
+        <p>
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+  name: "whereDoYouLive",
+  fieldset: {
+    legend: {
+      text: "How easy was it to use this service?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: [
+    {
+      value: "Very easy",
+      text: "Very easy"
+    },
+    {
+      value: "Easy",
+      text: "Easy"
+    },
+    {
+      value: "Neither easy nor difficult",
+      text: "Neither easy nor difficult"
+    },
+    {
+      value: "Difficult",
+      text: "Difficult"
+    },
+    {
+      value: "Very difficult",
+      text: "Very difficult"
+    }
+  ]
+}) }}
+
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+
+{{ govukTextarea({
+  name: "moreDetail",
+  id: "more-detail",
+  label: {
+    text: "Can you provide more detail?",
+    classes: "govuk-label--l",
+    isPageHeading: true
+  },
+  hint: {
+    text: "Any feedback that you provide will be used to improve the service"
+  }
+}) }}
+        </p>
+
+        {{ govukButton({
+          text: "Submit feedback"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
