@@ -1,5 +1,5 @@
 {
-  "serviceName": "Get AI recommnedations for digital records",
+  "serviceName": "Get AI recommendations for digital records",
   "useServiceNavigation": true,
   "plugins": {
     "govuk-frontend": {
