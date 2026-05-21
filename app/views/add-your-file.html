@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block containerStart %}
+ {{ super() }}
   {{ govukBackLink({
     text: "Back",
     href: "javascript:window.history.back()"
@@ -31,9 +32,19 @@
         <li>have no more than 1 million rows</li>
       </ul>
 
+      {% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
+
+{{ govukFileUpload({
+  id: "file-upload-1",
+  name: "fileUpload1",
+  label: {
+    text: "Upload a file"
+  },
+  javascript: true
+}) }}
 
         {{ govukButton({
-          text: "Continue"
+          text: "Add file"
         }) }}
 
       </form>
