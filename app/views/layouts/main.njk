@@ -19,33 +19,38 @@ html: 'This is a new service. Help us improve it and <a class="govuk-link" href=
 
 {% block govukFooter %}
 
-{% from "govuk/components/details/macro.njk" import govukDetails %}
+{% from "govuk/components/footer/macro.njk" import govukFooter %}
 
- {{ govukFooter({
-   meta: {
-     items: [
-       {
-         href: "/privacy",
-         text: "Privacy policy"
-       },
-              {
-         href: "/cookies",
-         text: "Cookies"
-       },
-              {
-         href: "/accessibility_statement",
-         text: "Accessibility statement"
-       },
-       {
-         href: "/manage-prototype",
-         text: "Manage your prototype"
-       },
-       {
-         href: "/manage-prototype/clear-data",
-         text: "Clear data"
-       }
-     ],
-     visuallyHiddenTitle: "Footer links"
-   }
- }) }}
+{% set getHelpHtml %}
+  <h2 class="govuk-heading-m">Get help</h2>
+  <a class="govuk-link" href="/chat">Email the AI Centre of Excellence</a></p>
+  <p class="govuk-body">Monday to Friday, 8.30am to 5.30pm</p>
+  <p class="govuk-body"><a class="govuk-link" href="/getting-into-teaching">Find out more about the AI Centre of Excellence</a></p>
+{% endset %}
+
+{{ govukFooter({
+  meta: {
+    html: getHelpHtml,
+    items: [
+      {
+        href: "/accessibility_statement",
+        text: "Accessibility"
+      },
+      {
+        href: "/cookies",
+        text: "Cookies"
+      },
+      {
+        href: "/privacy",
+        text: "Privacy"
+      },
+      {
+        href: "/terms",
+        text: "Terms and conditions"
+      }
+    ],
+    visuallyHiddenTitle: "Footer links"
+  }
+}) }}
+
 {% endblock %}
