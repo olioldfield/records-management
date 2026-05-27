@@ -6,12 +6,14 @@
 const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
 
-router.get('/', (req, res) => {
-  res.redirect('/start')
-})
+
 
 const multer = require('multer')
 const upload = multer()
+
+router.get('/', (req, res) => {
+  res.redirect('/start')
+})
 
 router.post('/add-your-file', upload.single('fileUpload1'), (req, res) => {
   if (!req.file) {
