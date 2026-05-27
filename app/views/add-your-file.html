@@ -34,13 +34,18 @@
         {% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
 
         {{ govukFileUpload({
-          id: "file-upload-1",
-          name: "fileUpload1",
-          label: {
-            text: "Upload a file"
-          },
-          javascript: true
-        }) }}
+  id: "file-upload-1",
+  name: "file-upload-1",
+  label: {
+    text: "Upload a file",
+    isPageHeading: false,
+    classes: "govuk-label--s"
+  },
+  hint: {
+    text: "Make sure the file is a CSV file, no larger than 50 MB and has no more than 1 million rows."
+  },
+  javascript: true
+}) }}
 
         {{ govukButton({
           text: "Add file",
