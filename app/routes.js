@@ -6,7 +6,9 @@
 const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
 
-// Add your routes here
+router.get('/', (req, res) => {
+  res.redirect('/start')
+})
 
 const multer = require('multer')
 const upload = multer()
