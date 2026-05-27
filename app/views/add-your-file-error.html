@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+  Error: Add your file for AI review – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block containerStart %}
@@ -17,6 +17,19 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
+      {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+      {% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
+
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: [
+          {
+            text: "Add a file to upload",
+            href: "#file-upload-1"
+          }
+        ]
+      }) }}
+
       <h1 class="govuk-heading-l">
         Add your file for AI review
       </h1>
@@ -31,13 +44,14 @@
           <li>have no more than 1 million rows</li>
         </ul>
 
-        {% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
-
         {{ govukFileUpload({
           id: "file-upload-1",
           name: "fileUpload1",
           label: {
             text: "Upload a file"
+          },
+          errorMessage: {
+            text: "Add a file to upload"
           },
           javascript: true
         }) }}
