@@ -4,6 +4,12 @@
   Start page template – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
+{% block header %}
+  <header>
+    {{govukHeader()}}
+  </header>
+{% endblock %}
+
 {% block containerStart %}
 {{ super() }}
   {{ govukBreadcrumbs({
@@ -43,20 +49,24 @@
 
       <p>You must check all recommendations before making a final decision.</p>
 
+
       <h2 class="govuk-heading-m">
         Before you start
       </h2>
 
-      <p>You'll need a CSV file from the metadata extraction tool. It must:</p>
+      <p> You'll need a CSV file from the metadata extraction tool. It must:</p>
 
-      <ul class="govuk-list govuk-list--bullet">
+        <ul class="govuk-list govuk-list--bullet">
         <li>be no larger than 50 MB</li>
         <li>have no more than 1 million rows</li>
       </ul>
 
-      <p>You'll get an email when your recommendations are ready.</p>
 
-      {{ govukButton({
+      <p>
+        You'll get an email when your recommendations are ready.
+      </p>
+
+            {{ govukButton({
         text: "Start now",
         href: "/homepage",
         isStartButton: true
