@@ -3,24 +3,6 @@
 Start page template – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
-{% block containerStart %}
-{{ super() }}
-{{ govukBreadcrumbs({
-items: [
-{
-text: "Home",
-href: "#"
-},
-{
-text: "Section",
-href: "#"
-},
-{
-text: "Subsection"
-}
-]
-}) }}
-{% endblock %}
 
 {% block content %}
 
@@ -63,35 +45,6 @@ isStartButton: true
 
 </div>
 
-<div class="govuk-grid-column-one-third">
-
-<aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
-<h2 class="govuk-heading-m" id="subsection-title">
-Related information
-</h2>
-<nav role="navigation" aria-labelledby="subsection-title">
-<ul class="govuk-list govuk-!-font-size-16">
-<li>
-<a href="https://www.nationalarchives.gov.uk/information-management/manage-information/digital-records-transfer/">
-National Archives guidance on digital records transfer
-</a>
-</li>
-<li>
-<a href="https://educationgovuk.sharepoint.com/sites/manage-information/SitePages/digital.aspx">
-DfE guidance on managing digital records
-</a>
-</li>
-<li>
-<a href="https://educationgovuk.sharepoint.com/sites/manage-information/SitePages/retention-and-disposal-schedule.aspx" class="govuk-!-font-weight-bold">
-Retention and disposal schedules <span class="govuk-visually-hidden">in Subsection</span>
-</a>
-</li>
-</ul>
-</nav>
-</aside>
-
-</div>
-</div>
 
 {% endblock %}
 

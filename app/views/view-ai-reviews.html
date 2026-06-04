@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+  View AI reviews – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block containerStart %}
@@ -15,77 +15,211 @@
 {% block content %}
 
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-grid-column-full">
 
-      <h1 class="govuk-heading-l">
-        View AI reviews
+      <h1 class="govuk-heading-l" id="top">
+        View your AI reviews
       </h1>
 
-      <form class="form" action="/path/of/next/page" method="post">
+      {% from "govuk/components/tabs/macro.njk" import govukTabs %}
+      {% from "govuk/components/pagination/macro.njk" import govukPagination %}
 
-      {% from "govuk/components/table/macro.njk" import govukTable %}
-
-{{ govukTable({
-  caption: "AI reviews",
-  captionClasses: "govuk-table__caption--m",
-  firstCellIsHeader: true,
-  head: [
-    {
-      text: "Date added",
-      classes: "govuk-!-width-one-quarter"
-    },
-    {
-      text: "File name",
-      classes: "govuk-!-width-one-half"
-    },
-    {
-      text: "Status",
-      classes: "govuk-!-width-one-quarter"
-    },
-    {
-      text: "Action",
-      classes: "govuk-!-width-one-quarter"
-    }
-  ],
-  rows: [
-          [
-            { text: "15 May 2026" },
-            { text: "Health and Safety database 2 - JD -AI" },
-            { text: "Waiting" },
-            { text: "No action yet" }
-          ],
-          [
-            { text: "15 May 2026" },
-            { text: "Health and Safety database 1 - JD -AI" },
-            { text: "Waiting" },
-            { text: "No action yet" }
-          ],
-          [
-            { text: "4 May 2026" },
-            { text: "HR Policies_Internet 5 - JD -AI" },
-            { text: "Waiting" },
-            { text: "No action yet" }
-          ],
-          [
-            { text: "4 May 2026" },
-            { text: "Internal Labour Market Project 3 - DD -AI" },
-            { text: "Being reviewed" },
-            { text: "No action yet" }
-          ],
-          [
-            { text: "1 May 2026" },
-            { text: "Policies_Internet 6 -DD -AI" },
-            { text: "Complete" },
-            { html: '<a class="govuk-link" href="/download">Download</a>' }
-          ]
+      {{ govukTabs({
+        items: [
+          {
+            label: "Your files",
+            id: "your-files",
+            panel: {
+              html: '
+              <table class="govuk-table">
+                <thead class="govuk-table__head">
+                  <tr class="govuk-table__row">
+                    <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Date added</th>
+                    <th scope="col" class="govuk-table__header govuk-!-width-one-half">File name</th>
+                    <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Status</th>
+                    <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Action</th>
+                  </tr>
+                </thead>
+                <tbody class="govuk-table__body">
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">15 May 2026</td>
+                    <td class="govuk-table__cell">Health and Safety database 2 - JD - AI</td>
+                    <td class="govuk-table__cell">Waiting</td>
+                    <td class="govuk-table__cell">No action yet</td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">15 May 2026</td>
+                    <td class="govuk-table__cell">Health and Safety database 1 - JD - AI</td>
+                    <td class="govuk-table__cell">Waiting</td>
+                    <td class="govuk-table__cell">No action yet</td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">4 May 2026</td>
+                    <td class="govuk-table__cell">HR Policies_Internet 5 - JD - AI</td>
+                    <td class="govuk-table__cell">Waiting</td>
+                    <td class="govuk-table__cell">No action yet</td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">2 May 2026</td>
+                    <td class="govuk-table__cell">Internal Labour Market Project 3 - DD - AI</td>
+                    <td class="govuk-table__cell">Complete</td>
+                    <td class="govuk-table__cell"><a class="govuk-link" href="/download">Download</a></td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">2 May 2026</td>
+                    <td class="govuk-table__cell">Internal Labour Market Project 2 - DD - AI</td>
+                    <td class="govuk-table__cell">Complete</td>
+                    <td class="govuk-table__cell"><a class="govuk-link" href="/download">Download</a></td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">2 May 2026</td>
+                    <td class="govuk-table__cell">Internal Labour Market Project 1 - DD - AI</td>
+                    <td class="govuk-table__cell">Complete</td>
+                    <td class="govuk-table__cell"><a class="govuk-link" href="/download">Download</a></td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">1 May 2026</td>
+                    <td class="govuk-table__cell">Policies_Internet 6 - DD - AI</td>
+                    <td class="govuk-table__cell">Complete</td>
+                    <td class="govuk-table__cell"><a class="govuk-link" href="/download">Download</a></td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">10 April 2026</td>
+                    <td class="govuk-table__cell">Policies_Internet 5 - DD - AI</td>
+                    <td class="govuk-table__cell">Complete</td>
+                    <td class="govuk-table__cell"><a class="govuk-link" href="/download">Download</a></td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">10 April 2026</td>
+                    <td class="govuk-table__cell">Policies_Internet 4 - DD - AI</td>
+                    <td class="govuk-table__cell">Complete</td>
+                    <td class="govuk-table__cell"><a class="govuk-link" href="/download">Download</a></td>
+                  </tr>
+                </tbody>
+              </table>
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <nav aria-label="Pagination">
+                  <ul style="list-style:none; padding:0; margin:0; display:flex; gap:8px; align-items:center;">
+                    <li><a class="govuk-link" href="#your-files" style="display:inline-block; padding:8px 12px; background:#1d70b8; color:white; text-decoration:none; font-weight:bold;">1</a></li>
+                    <li><a class="govuk-link govuk-link--no-visited-state" href="#your-files" style="padding:8px 12px;">2</a></li>
+                    <li><a class="govuk-link govuk-link--no-visited-state" href="#your-files">Next →</a></li>
+                  </ul>
+                </nav>
+                <a class="govuk-link" href="#top">↑ Back to top</a>
+              </div>'
+            }
+          },
+          {
+            label: "All files",
+            id: "all-files",
+            panel: {
+              html: '
+              <table class="govuk-table">
+                <thead class="govuk-table__head">
+                  <tr class="govuk-table__row">
+                    <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Date added</th>
+                    <th scope="col" class="govuk-table__header govuk-!-width-one-half">File name</th>
+                    <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Status</th>
+                    <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Action</th>
+                  </tr>
+                </thead>
+                <tbody class="govuk-table__body">
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">15 May 2026</td>
+                    <td class="govuk-table__cell">Health and Safety database 2 - JD - AI</td>
+                    <td class="govuk-table__cell">Waiting</td>
+                    <td class="govuk-table__cell">No action yet</td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">15 May 2026</td>
+                    <td class="govuk-table__cell">Health and Safety database 1 - JD - AI</td>
+                    <td class="govuk-table__cell">Waiting</td>
+                    <td class="govuk-table__cell">No action yet</td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">4 May 2026</td>
+                    <td class="govuk-table__cell">HR Policies_Internet 5 - JD - AI</td>
+                    <td class="govuk-table__cell">Waiting</td>
+                    <td class="govuk-table__cell">No action yet</td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">4 May 2026</td>
+                    <td class="govuk-table__cell">HR Policies_Internet 4 - JD - AI</td>
+                    <td class="govuk-table__cell">Waiting</td>
+                    <td class="govuk-table__cell">No action yet</td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">4 May 2026</td>
+                    <td class="govuk-table__cell">HR Policies_Internet 3 - JD - AI</td>
+                    <td class="govuk-table__cell">Being reviewed</td>
+                    <td class="govuk-table__cell">No action yet</td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">4 May 2026</td>
+                    <td class="govuk-table__cell">HR Policies_Internet 2 - JD - AI</td>
+                    <td class="govuk-table__cell">Complete</td>
+                    <td class="govuk-table__cell"><a class="govuk-link" href="/download">Download</a></td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">2 May 2026</td>
+                    <td class="govuk-table__cell">Internal Labour Market Project 4 - DD - AI</td>
+                    <td class="govuk-table__cell">Complete</td>
+                    <td class="govuk-table__cell"><a class="govuk-link" href="/download">Download</a></td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">2 May 2026</td>
+                    <td class="govuk-table__cell">Internal Labour Market Project 3 - DD - AI</td>
+                    <td class="govuk-table__cell">Complete</td>
+                    <td class="govuk-table__cell"><a class="govuk-link" href="/download">Download</a></td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">2 May 2026</td>
+                    <td class="govuk-table__cell">Internal Labour Market Project 2 - DD - AI</td>
+                    <td class="govuk-table__cell">Complete</td>
+                    <td class="govuk-table__cell"><a class="govuk-link" href="/download">Download</a></td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">2 May 2026</td>
+                    <td class="govuk-table__cell">Internal Labour Market Project 1 - DD - AI</td>
+                    <td class="govuk-table__cell">Complete</td>
+                    <td class="govuk-table__cell"><a class="govuk-link" href="/download">Download</a></td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">1 May 2026</td>
+                    <td class="govuk-table__cell">Policies_Internet 6 - DD - AI</td>
+                    <td class="govuk-table__cell">Complete</td>
+                    <td class="govuk-table__cell"><a class="govuk-link" href="/download">Download</a></td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">10 April 2026</td>
+                    <td class="govuk-table__cell">Policies_Internet 5 - DD - AI</td>
+                    <td class="govuk-table__cell">Complete</td>
+                    <td class="govuk-table__cell"><a class="govuk-link" href="/download">Download</a></td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">10 April 2026</td>
+                    <td class="govuk-table__cell">Policies_Internet 4 - DD - AI</td>
+                    <td class="govuk-table__cell">Complete</td>
+                    <td class="govuk-table__cell"><a class="govuk-link" href="/download">Download</a></td>
+                  </tr>
+                </tbody>
+              </table>
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <nav aria-label="Pagination">
+                  <ul style="list-style:none; padding:0; margin:0; display:flex; gap:8px; align-items:center;">
+                    <li><a class="govuk-link" href="#all-files" style="display:inline-block; padding:8px 12px; background:#1d70b8; color:white; text-decoration:none; font-weight:bold;">1</a></li>
+                    <li><a class="govuk-link govuk-link--no-visited-state" href="#all-files" style="padding:8px 12px;">2</a></li>
+                    <li><a class="govuk-link govuk-link--no-visited-state" href="#all-files">Next →</a></li>
+                  </ul>
+                </nav>
+                <a class="govuk-link" href="#top">↑ Back to top</a>
+              </div>'
+            }
+          }
         ]
       }) }}
 
-
-    </form>
-
+    </div>
   </div>
-</div>
 
 {% endblock %}
-
