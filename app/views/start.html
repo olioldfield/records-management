@@ -1,107 +1,98 @@
 {% extends "layouts/main.html" %}
-
 {% block pageTitle %}
-  Start page template – {{ serviceName }} – GOV.UK Prototype Kit
-{% endblock %}
-
-{% block header %}
-  <header>
-    {{govukHeader()}}
-  </header>
+Start page template – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block containerStart %}
 {{ super() }}
-  {{ govukBreadcrumbs({
-    items: [
-      {
-        text: "Home",
-        href: "#"
-      },
-      {
-        text: "Section",
-        href: "#"
-      },
-      {
-        text: "Subsection"
-      }
-    ]
-  }) }}
+{{ govukBreadcrumbs({
+items: [
+{
+text: "Home",
+href: "#"
+},
+{
+text: "Section",
+href: "#"
+},
+{
+text: "Subsection"
+}
+]
+}) }}
 {% endblock %}
 
 {% block content %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-xl">
-        {{ serviceName }}
-      </h1>
+<h1 class="govuk-heading-xl">
+{{ serviceName }}
+</h1>
 
-      <p>Use this service to:</p>
+<p>Use this service to:</p>
 
-      <ul class="govuk-list govuk-list--bullet">
-        <li>get AI-generated recommendations to help classify your records</li>
-        <li>understand the reason for each recommendation</li>
-      </ul>
+<ul class="govuk-list govuk-list--bullet">
+<li>get AI-generated recommendations to help classify your records</li>
+<li>understand the reason for each recommendation</li>
+</ul>
 
-      <p>AI-generated recommendations may be inaccurate.</p>
+<p>AI-generated recommendations may be inaccurate.</p>
 
-      <p>You must check all recommendations before making a final decision.</p>
+<p>You must check all recommendations before making a final decision.</p>
 
+<h2 class="govuk-heading-m">
+Before you start
+</h2>
 
-      <h2 class="govuk-heading-m">
-        Before you start
-      </h2>
+<p>You'll need a CSV file from the metadata extraction tool. It must:</p>
 
-      <p> You'll need a CSV file from the metadata extraction tool. It must:</p>
+<ul class="govuk-list govuk-list--bullet">
+<li>be no larger than 50 MB</li>
+<li>have no more than 1 million rows</li>
+</ul>
 
-        <ul class="govuk-list govuk-list--bullet">
-        <li>be no larger than 50 MB</li>
-        <li>have no more than 1 million rows</li>
-      </ul>
+<p>You'll get an email when your recommendations are ready.</p>
 
+{{ govukButton({
+text: "Start now",
+href: "/homepage",
+isStartButton: true
+}) }}
 
-      <p>
-        You'll get an email when your recommendations are ready.
-      </p>
+</div>
 
-            {{ govukButton({
-        text: "Start now",
-        href: "/homepage",
-        isStartButton: true
-      }) }}
+<div class="govuk-grid-column-one-third">
 
-    </div>
+<aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
+<h2 class="govuk-heading-m" id="subsection-title">
+Related information
+</h2>
+<nav role="navigation" aria-labelledby="subsection-title">
+<ul class="govuk-list govuk-!-font-size-16">
+<li>
+<a href="https://www.nationalarchives.gov.uk/information-management/manage-information/digital-records-transfer/">
+National Archives guidance on digital records transfer
+</a>
+</li>
+<li>
+<a href="https://educationgovuk.sharepoint.com/sites/manage-information/SitePages/digital.aspx">
+DfE guidance on managing digital records
+</a>
+</li>
+<li>
+<a href="https://educationgovuk.sharepoint.com/sites/manage-information/SitePages/retention-and-disposal-schedule.aspx" class="govuk-!-font-weight-bold">
+Retention and disposal schedules <span class="govuk-visually-hidden">in Subsection</span>
+</a>
+</li>
+</ul>
+</nav>
+</aside>
 
-    <div class="govuk-grid-column-one-third">
-
-      <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
-        <h2 class="govuk-heading-m" id="subsection-title">
-          Related information
-        </h2>
-        <nav role="navigation" aria-labelledby="subsection-title">
-          <ul class="govuk-list govuk-!-font-size-16">
-            <li>
-              <a href="https://www.nationalarchives.gov.uk/information-management/manage-information/digital-records-transfer/">
-                National Archives guidance on digital records transfer
-              </a>
-            </li>
-            <li>
-              <a href="https://educationgovuk.sharepoint.com/sites/manage-information/SitePages/digital.aspx">
-                DfE guidance on managing digital records
-              </a>
-            </li>
-            <li>
-              <a href="https://educationgovuk.sharepoint.com/sites/manage-information/SitePages/retention-and-disposal-schedule.aspx" class="govuk-!-font-weight-bold">
-                Retention and disposal schedules <span class="govuk-visually-hidden">in Subsection</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </aside>
-
-    </div>
-  </div>
+</div>
+</div>
 
 {% endblock %}
+
+
