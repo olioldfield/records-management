@@ -11,3 +11,8 @@
   background-color: #f3f2f1; /* govuk-secondary-background-colour */
   height: 100%;
 }
+
+@import "node_modules/dfe-frontend/packages/dfefrontend";
+
+import DfEFrontend from 'dfe-frontend'
+DfEFrontend.initAll()
