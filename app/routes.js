@@ -16,14 +16,16 @@ const upload = multer({
   fileFilter: (req, file, cb) => {
     const isCsvMime =
       file.mimetype === 'text/csv' ||
-      file.mimetype === 'application/vnd.ms-excel' // some browsers use this
+      file.mimetype === 'application/vnd.ms-excel'
 
     const isCsvExt = file.originalname.toLowerCase().endsWith('.csv')
 
     if (isCsvMime && isCsvExt) {
       cb(null, true)
     } else {
-      cb(null, false) // reject file but don't crash
+      // ✅ Mark invalid file type
+      req.fileValidationError = true
+      cb(null, false)
     }
   }
 })
@@ -36,12 +38,20 @@ router.get('/', (req, res) => {
 // ✅ File upload route
 router.post(
   '/add-your-file',
-  upload.single('file-upload-1'), // must match your HTML
+  upload.single('file-upload-1'),
   (req, res) => {
+
+    // ❌ Wrong file type (not CSV)
+    if (req.fileValidationError) {
+      return res.redirect('/add-your-file-file-type-error')
+    }
+
+    // ❌ No file uploaded
     if (!req.file) {
       return res.redirect('/add-your-file-error')
     }
 
+    // ✅ Valid CSV
     return res.redirect('/file-added')
   }
 )
